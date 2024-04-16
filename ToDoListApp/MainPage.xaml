@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoListApp.MainPage">
+
+    <StackLayout>
+        <Entry 
+            Text="" 
+            Placeholder="What do you need to do..."
+            TextChanged="HandleTextChanged"
+            Completed="HandleEnterPressed"
+        />
+        <StackLayout x:Name="ToDoList">
+            
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

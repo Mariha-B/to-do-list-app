@@ -1,0 +1,9 @@
+# Visual Studio files
+.vs/
+
+# Build and binary files
+bin/
+obj/
+
+# Dependency directories
+packages/
