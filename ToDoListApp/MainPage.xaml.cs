@@ -15,15 +15,5 @@ namespace ToDoListApp
             InitializeComponent();
         }
 
-        public void HandleTextChanged(object sender, TextChangedEventArgs e)
-        {
-            Console.WriteLine(e.NewTextValue);
-        }
-
-        public void HandleEnterPressed(object sender, EventArgs e)
-        {
-            Console.WriteLine("Enter Pressed");
-            
-        }
     }
 }

@@ -1,18 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ToDoListApp"
              x:Class="ToDoListApp.MainPage">
-
+    
+    <ContentPage.BindingContext>
+        <local:ToDoListViewModel/>
+    </ContentPage.BindingContext>
+    
     <StackLayout>
         <Entry 
-            Text="" 
+            x:Name="InputField"
+            Text="{Binding NewToDoInputValue}" 
             Placeholder="What do you need to do..."
-            TextChanged="HandleTextChanged"
-            Completed="HandleEnterPressed"
+            ReturnCommand="{Binding AddToDoCommand}"
         />
-        <StackLayout x:Name="ToDoList">
-            
-        </StackLayout>
+        <ListView x:Name="ToDoList" ItemsSource="{Binding ToDoItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding ToDoText}" FontSize="Large"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>
