@@ -19,7 +19,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding ToDoText}" FontSize="Large"/>
+                        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Padding="20, 0">
+                            <Label Text="{Binding ToDoText}" FontSize="Large"/>
+                            <ImageButton 
+                                Source="trash.png" 
+                                Scale="0.5"
+                                Command="{Binding Path=BindingContext.RemoveToDoCommand, Source={x:Reference ToDoList} }"
+                                CommandParameter="{Binding .}"
+                             
+                                />
+                        </FlexLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -27,3 +36,4 @@
     </StackLayout>
 
 </ContentPage>
+ 
