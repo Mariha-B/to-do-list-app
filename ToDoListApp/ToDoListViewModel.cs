@@ -14,7 +14,7 @@ namespace ToDoListApp
         { 
             ToDoItems = new ObservableCollection<ToDoItem>();
 
-            ToDoItems.Add(new ToDoItem("Todo 1", false));
+            ToDoItems.Add(new ToDoItem("Todo 1", true));
             ToDoItems.Add(new ToDoItem("Todo 2", false));
             ToDoItems.Add(new ToDoItem("Todo 3", false));
         }
