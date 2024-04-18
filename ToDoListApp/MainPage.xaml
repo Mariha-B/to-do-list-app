@@ -8,8 +8,55 @@
     <ContentPage.BindingContext>
         <local:ToDoListViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Entry Style -->
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Thistle"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Margin" Value="10,20"/>
+            </Style>
+
+            <!-- Label Style -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="10,0"/>
+
+            </Style>
+
+            <!-- CheckBox Style -->
+            <Style TargetType="input:CheckBox">
+                <Setter Property="Color" Value="Green"/>
+                <Setter Property="Margin" Value="10,0"/>
+            </Style>
+
+            <!-- ImageButton Style -->
+            <Style TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="Margin" Value="10,0"/>
+            </Style>
+
+            <!-- ListView Style -->
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="Lavender"/>
+                <Setter Property="SeparatorVisibility" Value="Default"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="SeparatorColor" Value="White"/>
+            </Style>
+            
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
-    <StackLayout>
+    <StackLayout Padding="10">
         <Entry 
             x:Name="InputField"
             Text="{Binding NewToDoInputValue}" 

@@ -24,6 +24,10 @@ namespace ToDoListApp
         void AddToDoItem()
         {
             ToDoItems.Add(new ToDoItem(NewToDoInputValue, false));
+            Console.WriteLine(NewToDoInputValue);
+            NewToDoInputValue = "";
+
+
         }
 
         public ICommand RemoveToDoCommand => new Command(RemoveToDoItem);
@@ -32,5 +36,7 @@ namespace ToDoListApp
             ToDoItem toDoItemBeingRemoved = o as ToDoItem;
             ToDoItems.Remove(toDoItemBeingRemoved);
         }
+
+
     }
 }
