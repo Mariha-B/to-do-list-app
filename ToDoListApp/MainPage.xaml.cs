@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+
 using Xamarin.Forms;
 
 namespace ToDoListApp
@@ -14,6 +11,17 @@ namespace ToDoListApp
         {
             InitializeComponent();
         }
-
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                ToDoList.ItemsSource = await App.Database.GetItemsAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error fetching items: {ex.Message}");
+            }
+        }
     }
 }

@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:ToDoListApp"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="ToDoListApp.MainPage">
-    
     <ContentPage.BindingContext>
         <local:ToDoListViewModel/>
     </ContentPage.BindingContext>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <!-- Entry Style -->
@@ -15,12 +15,19 @@
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="Thistle"/>
+                
                 <Setter Property="PlaceholderColor" Value="Black"/>
                 <Setter Property="HeightRequest" Value="50"/>
-                <Setter Property="Margin" Value="10,20"/>
+                <Setter Property="Margin" Value="10,10"/>
             </Style>
-
+            <!-- Frame Style -->
+            <Style TargetType="Frame">
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
             <!-- Label Style -->
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
@@ -40,48 +47,53 @@
             <Style TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="Aspect" Value="AspectFit"/>
-                <Setter Property="Margin" Value="10,0"/>
             </Style>
 
             <!-- ListView Style -->
             <Style TargetType="ListView">
-                <Setter Property="BackgroundColor" Value="Lavender"/>
                 <Setter Property="SeparatorVisibility" Value="Default"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="SeparatorColor" Value="White"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="SeparatorColor" Value="Black"/>
             </Style>
             
             
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <StackLayout Padding="10">
-        <Entry 
-            x:Name="InputField"
-            Text="{Binding NewToDoInputValue}" 
-            Placeholder="What do you need to do..."
-            ReturnCommand="{Binding AddToDoCommand}"
-        />
-        <ListView x:Name="ToDoList" ItemsSource="{Binding ToDoItems}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Padding="20, 0">
-                            <input:CheckBox IsChecked="{Binding Complete}"/>
-                            <Label Text="{Binding ToDoText}" FontSize="Large"/>
-                            <ImageButton 
-                                Source="trash.png" 
-                                Scale="0.5"
-                                Command="{Binding Path=BindingContext.RemoveToDoCommand, Source={x:Reference ToDoList} }"
-                                CommandParameter="{Binding .}"
-                             
-                                />
-                        </FlexLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+    <StackLayout Padding="10" BackgroundColor="DarkSeaGreen">
+        <FlexLayout JustifyContent="Center">
+            <Label Text="My To Do List" FontSize="40" FontAttributes="Bold"/>
+        </FlexLayout>
+
+        <Frame>
+            <Entry 
+                x:Name="InputField"
+                Text="{Binding NewToDoInputValue}" 
+                Placeholder="What do you need to do..."
+                ReturnCommand="{Binding AddToDoCommand}"
+            />
+        </Frame>
+        <Frame>
+            <ListView x:Name="ToDoList" ItemsSource="{Binding ToDoItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Padding="20, 0">
+                                <input:CheckBox IsChecked="{Binding Complete}"/>
+                                <Label Text="{Binding ToDoText}" FontSize="Large"/>
+                                <ImageButton 
+                                    Source="trash.png" 
+                                    Scale="0.5"
+                                    Command="{Binding Path=BindingContext.RemoveToDoCommand, Source={x:Reference ToDoList} }"
+                                    CommandParameter="{Binding .}"
+                                    />
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
     </StackLayout>
 
 </ContentPage>
